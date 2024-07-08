@@ -13,16 +13,11 @@ public class Speed implements Calculator {
 
     @Override
     public Map<String, Object> calculate(Map<String, Object> params) {
-        // Извлекаем значения из параметров как Double
-        Double s = ((Number) params.get("s")).doubleValue();
-        Double t = ((Number) params.get("t")).doubleValue();
+        double V = (double) params.get("V");
+        double t = (double) params.get("t");
 
-        // Вычисляем результат
-        Double result = s / t;
-
-        // Создаем карту для результата
         Map<String, Object> results = new HashMap<>();
-        results.put("result", result);
+        results.put("result", V*20.0/t);
         return results;
     }
 }
