@@ -16,4 +16,12 @@ public class Service {
     public Map<String, Calculator> getCalcList() {
         return calcList;
     }
+    public Map<String, String> getCalcInfo(String calc){
+        Map<String, String> info=new HashMap<>();
+        info.put("info", calcList.get(calc).getInfo());
+        return info;
+    }
+    public Map<String, Object> getResult(String calc, Map<String, Object> params){
+        return calcList.get(calc).calculate(params);
+    }
 }
