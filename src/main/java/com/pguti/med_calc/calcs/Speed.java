@@ -13,11 +13,12 @@ public class Speed implements Calculator {
 
     @Override
     public Map<String, Object> calculate(Map<String, Object> params) {
-        double V = (double) params.get("V");
-        double t = (double) params.get("t");
+        double k = (double) params.get("k");
+        double m = (double) params.get("m");
 
         Map<String, Object> results = new HashMap<>();
-        results.put("result", V*20.0/t);
+        results.put("result1", (5-k)*0.2*m);
+        results.put("result2", k*m);
         return results;
     }
 }
