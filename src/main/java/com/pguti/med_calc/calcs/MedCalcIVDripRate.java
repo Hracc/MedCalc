@@ -7,6 +7,16 @@ public class MedCalcIVDripRate implements MedCalc {
     private Map<String, Object> results;
 
     @Override
+    public String getId() {
+        return "IVDripRate";
+    }
+
+    @Override
+    public String getName() {
+        return "Я забыл как калькулятор называется";
+    }
+
+    @Override
     public String getInfo() {
         return "Очень крутая инфа";
     }
