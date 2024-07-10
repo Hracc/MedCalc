@@ -1,27 +1,26 @@
 package com.pguti.med_calc.controller;
 
-import com.pguti.med_calc.service.Service;
+import com.pguti.med_calc.service.MedCalcService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController
-public class Controller {
+@org.springframework.web.bind.annotation.RestController
+public class MedCalcRestController {
 
     @Autowired
-    private Service calcService;
+    private MedCalcService medCalcService;
     @GetMapping("/calculator/{calc}/info")
     public Map<String, String> getInfo(@PathVariable String calc){
-        return calcService.getCalcInfo(calc);
+        return medCalcService.getCalcInfo(calc);
     }
     @PostMapping("/calculator/{calc}/result")
     public Map<String, Object> getResult(@PathVariable String calc, @RequestBody Map<String, Object> params){
-//        return calcService.getResult(calc, params);
         Map<String, Object> response = new HashMap<>();
         try{
-            return calcService.getResult(calc, params);
+            return medCalcService.getResult(calc, params);
         } catch (IllegalArgumentException e) {
             return Map.of("error", "Invalid calculator name or parameters: " + e.getMessage());
         } catch (Exception e) {
