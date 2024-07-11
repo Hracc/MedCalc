@@ -8,19 +8,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @org.springframework.stereotype.Controller
 public class MedCalcController {
-    @Autowired
-    private MedCalcService medCalcService;
 
 
     @GetMapping("/")
     public String showCalcList(Model model){
-        model.addAttribute("calcList", medCalcService.getCalcList());
+        model.addAttribute("calcList", "");
         return "medCalcList";
     }
 
     @GetMapping("/{id}")
     public String showCalc(@PathVariable String id, Model model){
-        model.addAttribute("calcList", medCalcService.getCalcById(id));
+        model.addAttribute("calcList", "");
 
         return "medCalc";
     }
