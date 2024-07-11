@@ -11,7 +11,6 @@ import java.util.Map;
 public class MedCalcService {
     //    Переменная для хранения списка калькуляторов
     private final Map<String, MedCalc> calcList = new HashMap<>();
-    public va
 
     //    Заполнение списка калькуляторов
     {

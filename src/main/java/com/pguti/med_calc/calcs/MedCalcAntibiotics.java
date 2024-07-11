@@ -1,5 +1,6 @@
 package com.pguti.med_calc.calcs;
 
+import java.util.List;
 import java.util.Map;
 
 public class MedCalcAntibiotics implements MedCalc{
@@ -16,6 +17,11 @@ public class MedCalcAntibiotics implements MedCalc{
     @Override
     public String getInfo() {
         return "решает что то";
+    }
+
+    @Override
+    public List<MedCalcParamsList> getInfoParams() {
+        return List.of();
     }
 
     @Override
