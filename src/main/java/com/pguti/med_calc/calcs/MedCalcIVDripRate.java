@@ -14,12 +14,12 @@ public class MedCalcIVDripRate implements MedCalc {
 
     @Override
     public String getName() {
-        return "Я забыл как калькулятор называется";
+        return "Расчет скорости внутривенного капельного введения препарата";
     }
 
     @Override
     public String getInfo() {
-        return "Очень крутая инфа";
+        return "Расчет производится по следующей формуле: количество капель в минуту = V*20/t, где V - объем раствора в милилитрах, t - время в минутах, 20 - среднее количество капель в милилитре, v - скорость введения в каплях в минуту";
     }
 
     @Override
@@ -37,8 +37,8 @@ public class MedCalcIVDripRate implements MedCalc {
         }
         double result= V*20/t;
         Map<String, Object> results = new LinkedHashMap<>();
-        results.put("result1", result);
-        results.put("result2", result/60);
+        results.put("resultMinute", result);
+        results.put("resultHour", result/60);
         return results;
     }
 }

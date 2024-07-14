@@ -1,11 +1,11 @@
 package com.pguti.med_calc.service;
 
 import com.pguti.med_calc.calcs.MedCalc;
-import com.pguti.med_calc.calcs.MedCalcAntibiotics;
 import com.pguti.med_calc.calcs.MedCalcIVDripRate;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @org.springframework.stereotype.Service
 public class MedCalcService {
@@ -15,15 +15,14 @@ public class MedCalcService {
     //    Заполнение списка калькуляторов
     {
         putCalcList(new MedCalcIVDripRate());
-        putCalcList(new MedCalcAntibiotics());
     }
 
     private void putCalcList(MedCalc medCalc) {
         calcList.put(medCalc.getId(), medCalc);
     }
 
-    public Map<String, MedCalc> getCalcList() {
-        return calcList;
+    public Map<String, String> getCalcList() {
+        return calcList.values().stream().collect(Collectors.toMap(MedCalc::getId, MedCalc::getName));
     }
 
     public MedCalc getCalcById(String id) {
