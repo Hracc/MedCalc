@@ -10,19 +10,15 @@ import java.util.Map;
 @RestController
 @RequestMapping("/calculator")
 public class MedCalcRestController {
-
     private final MedCalcService medCalcService;
-
     @Autowired
     public MedCalcRestController(MedCalcService medCalcService) {
         this.medCalcService = medCalcService;
     }
-
     @GetMapping("/list")
     public Map<String, String> getCalcList() {
         return medCalcService.getCalcList();
     }
-
 
     @GetMapping("/{calc}/info")
     public ResponseEntity<Map<String, String>> getInfo(@PathVariable String calc) {
