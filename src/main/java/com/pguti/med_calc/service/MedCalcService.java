@@ -12,7 +12,7 @@ public class MedCalcService {
     //    Переменная для хранения списка калькуляторов
     private final Map<String, MedCalc> calcList = new HashMap<>();
 
-    //    Заполнение списка калькуляторов
+    //  *  Заполнение списка калькуляторов
     {
         putCalcList(new MedCalcIVDripRate());
     }
