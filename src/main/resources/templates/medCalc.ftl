@@ -10,14 +10,10 @@
     <a href="/">Вернуться назад</a>
     <h1>Калькулятор: Расчет скорости внутривенного капельного введения препарата</h1>
     <form id="medCalcForm">
-        <label for="V">Объем раствора (мл):</label>
-        <input type="number" step="0.1" id="V" name="V"><br><br>
-
-        <label for="t">Время (мин):</label>
-        <input type="number" step="0.1" id="t" name="t"><br><br>
-
-        <label for="hm">Использовать часы (выбор):</label>
-        <input type="checkbox" id="hm" name="hm"><br><br>
+        <#list info as param>
+            <label for=${param.key}>${param.name}</label>
+            <input type=${param.type} id=${param.key} name=${param.key}><br><br>
+        </#list>
     </form>
 
     <div id="result"></div>

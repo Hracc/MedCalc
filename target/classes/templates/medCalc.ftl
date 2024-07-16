@@ -10,14 +10,10 @@
     <a href="/">Вернуться назад</a>
     <h1>Калькулятор: Расчет скорости внутривенного капельного введения препарата</h1>
     <form id="medCalcForm">
-        <label for="V">Объем раствора (мл):</label>
-        <input type="number" step="0.1" id="V" name="V" required><br><br>
-
-        <label for="t">Время (мин):</label>
-        <input type="number" step="0.1" id="t" name="t" required><br><br>
-
-        <label for="hm">Использовать часы (выбор):</label>
-        <input type="checkbox" id="hm" name="hm"><br><br>
+        <#list info as param>
+            <label for=${param.key}>${param.name}</label>
+            <input type=${param.type} id=${param.key} name=${param.key}><br><br>
+        </#list>
     </form>
 
     <div id="result"></div>
@@ -51,17 +47,14 @@
                         }
                     });
                 } else {
-                    $('#result').html('<p>Пожалуйста, введите корректные значения.</p>');
+                    $('#result').html('<p>Введите все нужные значения.</p>');
                 }
             }
 
-            function debounceCalculate() {
+            $('#V, #t, #hm').on('input change', function(){
                 clearTimeout(debounceTimer);
                 debounceTimer = setTimeout(calculate, 300);
-            }
-
-            // Обработчики событий для всех полей ввода
-            $('#V, #t, #hm').on('input change', debounceCalculate);
+            });
         });
     </script>
 </body>

@@ -23,9 +23,9 @@ public class MedCalcIVDripRate implements MedCalc {
     @Override
     public List<MedCalcParamsList> getInfoParams() {
         return List.of(
-                new MedCalcParamsList("V", "Объем раствора (мл):", "Number"),
-                new MedCalcParamsList("hm", "В часах / в минутах:", "Bool"),
-                new MedCalcParamsList("t", "Время:", "Number")
+                new MedCalcParamsList("V", "Объем раствора (мл):", "number"),
+                new MedCalcParamsList("hm", "В часах / в минутах:", "checkbox"),
+                new MedCalcParamsList("t", "Время:", "number")
         );
     }
 

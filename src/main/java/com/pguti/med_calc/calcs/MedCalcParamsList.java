@@ -1,37 +1,37 @@
 package com.pguti.med_calc.calcs;
 
 public class MedCalcParamsList {
-    private String paramKey;
-    private String paramName;
-    private String paramType;
+    private String key;
+    private String name;
+    private String type;
 
-    public MedCalcParamsList(String paramKey, String paramName, String paramType) {
-        this.paramKey = paramKey;
-        this.paramName = paramName;
-        this.paramType = paramType;
+    public MedCalcParamsList(String key, String name, String type) {
+        this.key = key;
+        this.name = name;
+        this.type = type;
     }
 
-    public String getParamKey() {
-        return paramKey;
+    public String getKey() {
+        return key;
     }
 
-    public void setParamKey(String paramKey) {
-        this.paramKey = paramKey;
+    public void setKey(String key) {
+        this.key = key;
     }
 
-    public String getParamName() {
-        return paramName;
+    public String getName() {
+        return name;
     }
 
-    public void setParamName(String paramName) {
-        this.paramName = paramName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getParamType() {
-        return paramType;
+    public String getType() {
+        return type;
     }
 
-    public void setParamType(String paramType) {
-        this.paramType = paramType;
+    public void setType(String type) {
+        this.type = type;
     }
 }
