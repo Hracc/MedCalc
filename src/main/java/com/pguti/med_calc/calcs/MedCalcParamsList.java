@@ -5,6 +5,12 @@ public class MedCalcParamsList {
     private String paramName;
     private String paramType;
 
+    public MedCalcParamsList(String paramKey, String paramName, String paramType) {
+        this.paramKey = paramKey;
+        this.paramName = paramName;
+        this.paramType = paramType;
+    }
+
     public String getParamKey() {
         return paramKey;
     }

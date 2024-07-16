@@ -26,7 +26,9 @@ public class MedCalcController {
     public String getMedCalc(@PathVariable String calc, Model model){
         MedCalc medCalc= medCalcService.getCalcById(calc);
         if(medCalc != null && medCalc.getId().equals(calc)){
-            model.addAttribute("calc",medCalcService.getCalcById(calc));
+            model.addAttribute("calc",medCalc);
+            model.addAttribute("data", calc);
+            model.addAttribute("info", medCalc.getInfoParams());
         } else {
             model.addAttribute("alert", "нету такого");
         }

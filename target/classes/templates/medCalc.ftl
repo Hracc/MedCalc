@@ -30,8 +30,6 @@
                 const V = parseFloat($('#V').val());
                 const t = parseFloat($('#t').val());
                 const hm = $('#hm').is(':checked');
-
-                // Проверка, что значения V и t корректны
                 if (!isNaN(V) && !isNaN(t)) {
                     const params = {
                         V: V,
@@ -41,7 +39,7 @@
 
                     $.ajax({
                         type: 'POST',
-                        url: '/calculator/IVDripRate/result',
+                        url: '/calculator/${data?js_string}/result',
                         contentType: 'application/json',
                         data: JSON.stringify(params),
                         success: function(response) {

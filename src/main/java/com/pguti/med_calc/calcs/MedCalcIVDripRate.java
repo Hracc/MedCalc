@@ -1,8 +1,6 @@
 package com.pguti.med_calc.calcs;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MedCalcIVDripRate implements MedCalc {
     private Map<String, Object> results;
@@ -24,7 +22,11 @@ public class MedCalcIVDripRate implements MedCalc {
 
     @Override
     public List<MedCalcParamsList> getInfoParams() {
-        return List.of();
+        return List.of(
+                new MedCalcParamsList("V", "Объем раствора (мл):", "Number"),
+                new MedCalcParamsList("hm", "В часах / в минутах:", "Bool"),
+                new MedCalcParamsList("t", "Время:", "Number")
+        );
     }
 
     @Override

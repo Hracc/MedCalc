@@ -11,10 +11,10 @@
     <h1>Калькулятор: Расчет скорости внутривенного капельного введения препарата</h1>
     <form id="medCalcForm">
         <label for="V">Объем раствора (мл):</label>
-        <input type="number" step="0.1" id="V" name="V" required><br><br>
+        <input type="number" step="0.1" id="V" name="V"><br><br>
 
         <label for="t">Время (мин):</label>
-        <input type="number" step="0.1" id="t" name="t" required><br><br>
+        <input type="number" step="0.1" id="t" name="t"><br><br>
 
         <label for="hm">Использовать часы (выбор):</label>
         <input type="checkbox" id="hm" name="hm"><br><br>
@@ -30,8 +30,6 @@
                 const V = parseFloat($('#V').val());
                 const t = parseFloat($('#t').val());
                 const hm = $('#hm').is(':checked');
-
-                // Проверка, что значения V и t корректны
                 if (!isNaN(V) && !isNaN(t)) {
                     const params = {
                         V: V,
@@ -41,7 +39,7 @@
 
                     $.ajax({
                         type: 'POST',
-                        url: '/calculator/IVDripRate/result',
+                        url: '/calculator/${data?js_string}/result',
                         contentType: 'application/json',
                         data: JSON.stringify(params),
                         success: function(response) {
@@ -53,17 +51,14 @@
                         }
                     });
                 } else {
-                    $('#result').html('<p>Пожалуйста, введите корректные значения.</p>');
+                    $('#result').html('<p>Введите все нужные значения.</p>');
                 }
             }
 
-            function debounceCalculate() {
+            $('#V, #t, #hm').on('input change', function(){
                 clearTimeout(debounceTimer);
                 debounceTimer = setTimeout(calculate, 300);
-            }
-
-            // Обработчики событий для всех полей ввода
-            $('#V, #t, #hm').on('input change', debounceCalculate);
+            });
         });
     </script>
 </body>
