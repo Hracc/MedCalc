@@ -25,6 +25,7 @@ public class MedCalcService {
         return calcList.values().stream().collect(Collectors.toMap(MedCalc::getId, MedCalc::getName));
     }
 
+
     public MedCalc getCalcById(String id) {
         return calcList.get(id);
     }

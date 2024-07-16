@@ -29,9 +29,9 @@ public class MedCalcIVDripRate implements MedCalc {
 
     @Override
     public Map<String, Object> calculate(Map<String, Object> params) {
-        double V = (double) params.get("V");
+        double V = ((Number)  params.get("V")).doubleValue();
         boolean hm = (boolean) params.get("hm");
-        double t = (double) params.get("t");
+        double t = ((Number) params.get("t")).doubleValue();
         if(!hm){
             t*=60;
         }

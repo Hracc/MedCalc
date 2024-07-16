@@ -1,5 +1,6 @@
 package com.pguti.med_calc.controller;
 
+import com.pguti.med_calc.calcs.MedCalc;
 import com.pguti.med_calc.service.MedCalcService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +22,14 @@ public class MedCalcController {
         return "medCalcList";
     }
 
-    @GetMapping("/{id}")
-    public String getMedCalc(@PathVariable String id, Model model){
-        model.addAttribute("medCalc",medCalcService.getCalcById(id));
+    @GetMapping("/{calc}")
+    public String getMedCalc(@PathVariable String calc, Model model){
+        MedCalc medCalc= medCalcService.getCalcById(calc);
+        if(medCalc != null && medCalc.getId().equals(calc)){
+            model.addAttribute("calc",medCalcService.getCalcById(calc));
+        } else {
+            model.addAttribute("alert", "нету такого");
+        }
         return "medCalc";
     }
 }
