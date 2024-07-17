@@ -9,7 +9,7 @@
     <h1>Медицинские калькуляторы</h1>
     <div id="calcList">
     <#list medCalcList?keys as key>
-        <a href=${key}> ${medCalcList[key]} </a>
+        <a href='/calculator/${key}'> ${medCalcList[key]} </a><br><br>
     </#list>
     </div>
 </body>

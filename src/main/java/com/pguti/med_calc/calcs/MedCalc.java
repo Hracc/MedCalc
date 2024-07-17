@@ -8,5 +8,6 @@ public interface MedCalc {
     String getName();
     String getInfo();
     List<MedCalcParamsList> getInfoParams();
+    List<MedCalcResult> getInfoResult();
     Map<String, Object> calculate(Map<String, Object> params);
 }

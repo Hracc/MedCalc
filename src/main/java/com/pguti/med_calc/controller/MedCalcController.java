@@ -22,13 +22,14 @@ public class MedCalcController {
         return "medCalcList";
     }
 
-    @GetMapping("/{calc}")
+    @GetMapping("/calculator/{calc}")
     public String getMedCalc(@PathVariable String calc, Model model){
         MedCalc medCalc= medCalcService.getCalcById(calc);
         if(medCalc != null && medCalc.getId().equals(calc)){
             model.addAttribute("calc",medCalc);
             model.addAttribute("data", calc);
             model.addAttribute("info", medCalc.getInfoParams());
+            model.addAttribute("results", medCalc.getInfoResult());
         } else {
             model.addAttribute("alert", "нету такого");
         }
