@@ -1,5 +1,10 @@
 package com.pguti.med_calc.calcs;
 
+import com.pguti.med_calc.calcs.common.MedCalc;
+import com.pguti.med_calc.calcs.common.MedCalcUtils;
+import com.pguti.med_calc.calcs.common.MedCalcParamsList;
+import com.pguti.med_calc.calcs.common.MedCalcResult;
+
 import java.util.*;
 
 public class MedCalcIVDripRate implements MedCalc {
@@ -23,9 +28,9 @@ public class MedCalcIVDripRate implements MedCalc {
     @Override
     public List<MedCalcParamsList> getInfoParams() {
         return List.of(
-                new MedCalcParamsList("V", "Объем раствора (мл)", "number",true),
-                new MedCalcParamsList("hm", "В часах / в минутах", "checkbox", false),
-                new MedCalcParamsList("t", "Время", "number", true)
+                new MedCalcParamsList("V", "Объем раствора (мл)", "number"),
+                new MedCalcParamsList("hm", "В часах / в минутах", "checkbox"),
+                new MedCalcParamsList("t", "Время", "number")
         );
     }
 
@@ -39,16 +44,16 @@ public class MedCalcIVDripRate implements MedCalc {
 
     @Override
     public Map<String, Object> calculate(Map<String, Object> params) {
-        double V = ((Number)  params.get("V")).doubleValue();
-        boolean hm = (boolean) params.get("hm");
-        double t = ((Number) params.get("t")).doubleValue();
+        double V = MedCalcUtils.createNumber("V",params);
+        boolean hm = MedCalcUtils.createBoolean("hm", params);
+        double t = MedCalcUtils.createNumber("t",params);
         if(!hm){
             t*=60;
         }
         double result= V*20/t;
         Map<String, Object> results = new LinkedHashMap<>();
-        results.put("resultMinute", result);
-        results.put("resultHour", result/60);
+        results.put("resultMinute", MedCalcUtils.roundToNumber(result,1));
+        results.put("resultHour", MedCalcUtils.roundToNumber(result,2));
         return results;
     }
 }

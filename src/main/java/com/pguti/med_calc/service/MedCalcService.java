@@ -1,8 +1,8 @@
 package com.pguti.med_calc.service;
 
-import com.pguti.med_calc.calcs.MedCalc;
+import com.pguti.med_calc.calcs.MedCalcExample;
+import com.pguti.med_calc.calcs.common.MedCalc;
 import com.pguti.med_calc.calcs.MedCalcIVDripRate;
-import com.pguti.med_calc.calcs.MedCalcTest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +15,7 @@ public class MedCalcService {
 
     //  *  Заполнение списка калькуляторов
     {
-        putCalcList(new MedCalcIVDripRate());
-        putCalcList(new MedCalcTest());
+        putCalcList(new MedCalcExample());
     }
 
     private void putCalcList(MedCalc medCalc) {

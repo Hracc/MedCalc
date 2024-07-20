@@ -1,6 +1,6 @@
 package com.pguti.med_calc.controller;
 
-import com.pguti.med_calc.calcs.MedCalc;
+import com.pguti.med_calc.calcs.common.MedCalc;
 import com.pguti.med_calc.service.MedCalcService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +26,7 @@ public class MedCalcController {
     public String getMedCalc(@PathVariable String calc, Model model){
         MedCalc medCalc= medCalcService.getCalcById(calc);
         if(medCalc != null && medCalc.getId().equals(calc)){
-            model.addAttribute("calc",medCalc);
+            model.addAttribute("calc",medCalc.getName());
             model.addAttribute("data", calc);
             model.addAttribute("info", medCalc.getInfoParams());
             model.addAttribute("results", medCalc.getInfoResult());

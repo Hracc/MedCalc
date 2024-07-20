@@ -1,4 +1,4 @@
-package com.pguti.med_calc.calcs;
+package com.pguti.med_calc.calcs.common;
 
 import java.util.List;
 import java.util.Map;
