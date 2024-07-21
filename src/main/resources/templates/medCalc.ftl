@@ -13,10 +13,19 @@
     <form id="medCalcForm">
         <#list info as param>
             <label for="${param.key}">${param.descr}:</label><br>
-            <input type="${param.type}" id="${param.key}" name="${param.key}"><br><br>
+            <input type="${param.type}" id="${param.key}" name="${param.key}" 
+            <#list numbs as numb>
+            <#if numb.key == param.key> 
+                step=${numb.step?c}
+                max=${numb.max?c}
+                min=${numb.min?c}
+                </#if>
+            </#list>>
+            <br><br>
         </#list>
     </form>
     <div id="result"></div>
+    <div id="info"></div>
     <div id="descr"></div>
 
     <!-- Подключение внешнего скрипта -->
@@ -32,6 +41,11 @@
             </#list>
         ];
         const data = "${data}";
+        const notRequireNumbs = {
+            <#list notRequireNumbs?keys as key>
+                "${key}": ${notRequireNumbs[key]?c}<#if key_has_next>,</#if>
+            </#list>
+        };
     </script>
     <script src="/js/POSTResult.js"></script>
     <script src="/js/GETInfo.js"></script>

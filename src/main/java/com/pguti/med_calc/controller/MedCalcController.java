@@ -27,9 +27,11 @@ public class MedCalcController {
         MedCalc medCalc= medCalcService.getCalcById(calc);
         if(medCalc != null && medCalc.getId().equals(calc)){
             model.addAttribute("calc",medCalc.getName());
+            model.addAttribute("numbs",medCalc.getNumberParams());
             model.addAttribute("data", calc);
             model.addAttribute("info", medCalc.getInfoParams());
             model.addAttribute("results", medCalc.getInfoResult());
+            model.addAttribute("notRequireNumbs", medCalc.getNotRequireNumbs());
         } else {
             model.addAttribute("alert", "нету такого");
         }

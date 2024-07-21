@@ -1,15 +1,10 @@
 package com.pguti.med_calc.calcs.common;
 
-import com.pguti.med_calc.service.MedCalcService;
-
 import java.util.Map;
 
 public class MedCalcUtils {
-    public static String getRequireNumberParamType() {
-        return "number";
-    }
 
-    public static String getNotRequireNumberParamType() {
+    public static String getNumberParamType() {
         return "number";
     }
 

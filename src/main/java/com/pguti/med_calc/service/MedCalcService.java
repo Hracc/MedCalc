@@ -2,7 +2,6 @@ package com.pguti.med_calc.service;
 
 import com.pguti.med_calc.calcs.MedCalcExample;
 import com.pguti.med_calc.calcs.common.MedCalc;
-import com.pguti.med_calc.calcs.MedCalcIVDripRate;
 
 import java.util.HashMap;
 import java.util.Map;

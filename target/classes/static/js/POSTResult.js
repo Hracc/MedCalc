@@ -14,18 +14,23 @@ $(document).ready(function() {
 
             if (type === "number") {
                 value = parseFloat($(`#${key}`).val());
+                if (isNaN(value) || value === "") {
+                    if (notRequireNumbs.hasOwnProperty(key)) {
+                        value = notRequireNumbs[key];  // Используем значение по умолчанию, если оно есть
+                    } else {
+                        allInputsValid = false;  // Поле обязательно, но значение отсутствует или некорректно
+                        return;  // Прекращаем выполнение для текущего параметра
+                    }
+                }
             } else {
                 value = $(`#${key}`).is(':checked');
             }
 
-            if (isNaN(value) || value === "") {
-                value = 1;
-            }
             params[key] = value;
 
             // Проверка обязательных полей
             if ((isNaN(value) || value === "")) {
-                //allInputsValid = false;
+                allInputsValid = false;
             }
         });
 

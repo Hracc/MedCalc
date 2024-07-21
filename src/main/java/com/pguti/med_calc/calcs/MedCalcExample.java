@@ -8,8 +8,26 @@ import com.pguti.med_calc.calcs.common.MedCalcUtils;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class MedCalcExample implements MedCalc {
+
+
+    @Override
+    public List<MedCalcNumbParams> getNumberParams() {
+        return List.of(
+                new MedCalcNumbParams("var1", 1, 0,200),
+                new MedCalcNumbParams("var2",0.1,0,100)
+        );
+    }
+
+    @Override
+    public Map<String, Double> getNotRequireNumbs() {
+        return Map.of(
+                "var2",1.0
+        );
+    }
+
     @Override
     public String getId() {
         return "example";
@@ -28,8 +46,8 @@ public class MedCalcExample implements MedCalc {
     @Override
     public List<MedCalcParamsList> getInfoParams() {
         return List.of(
-                new MedCalcParamsList("var1", "Число 1", MedCalcUtils.getRequireNumberParamType()),
-                new MedCalcParamsList("var2", "Число 2(не обязательно)", MedCalcUtils.getNotRequireNumberParamType()),
+                new MedCalcParamsList("var1", "Число 1", MedCalcUtils.getNumberParamType()),
+                new MedCalcParamsList("var2", "Число 2(не обязательно)", MedCalcUtils.getNumberParamType()),
                 new MedCalcParamsList("var3", "Да/Нет", MedCalcUtils.getBooleanParamType())
         );
     }
@@ -47,11 +65,11 @@ public class MedCalcExample implements MedCalc {
         Double var2 = MedCalcUtils.createNumber("var2", params);
         boolean var3 = MedCalcUtils.createBoolean("var3", params);
         Map<String, Object> result = new HashMap<>();
-        double numb = 5;
+        double numb = 0;
         if (var3) {
             numb *= 2;
         }
-        result.put("res", MedCalcUtils.roundToNumber(var1 * var2 + numb,0));
+        result.put("res", MedCalcUtils.roundToNumber(var1 * var2 + numb,2));
         return result;
     }
 }

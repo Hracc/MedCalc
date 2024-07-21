@@ -1,9 +1,13 @@
 package com.pguti.med_calc.calcs.common;
 
+import com.pguti.med_calc.calcs.MedCalcNumbParams;
+
 import java.util.List;
 import java.util.Map;
 
 public interface MedCalc {
+    List<MedCalcNumbParams> getNumberParams();
+    Map<String, Double> getNotRequireNumbs();
     String getId();
     String getName();
     String getInfo();
