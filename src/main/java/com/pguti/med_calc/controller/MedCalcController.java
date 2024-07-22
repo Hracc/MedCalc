@@ -32,6 +32,7 @@ public class MedCalcController {
             model.addAttribute("info", medCalc.getInfoParams());
             model.addAttribute("results", medCalc.getInfoResult());
             model.addAttribute("notRequireNumbs", medCalc.getNotRequireNumbs());
+            model.addAttribute("selects", medCalc.getListParam());
         } else {
             model.addAttribute("alert", "нету такого");
         }

@@ -12,29 +12,34 @@ $(document).ready(function() {
             let type = param.type;
             let value;
 
-            if (type === "number") {
-                value = parseFloat($(`#${key}`).val());
-                if (isNaN(value) || value === "") {
-                    if (notRequireNumbs.hasOwnProperty(key)) {
-                        value = notRequireNumbs[key];  // Используем значение по умолчанию, если оно есть
-                    } else {
-                        allInputsValid = false;  // Поле обязательно, но значение отсутствует или некорректно
-                        return;  // Прекращаем выполнение для текущего параметра
+            switch (type) {
+                case "number":
+                    value = parseFloat($(`#${key}`).val());
+                    if (isNaN(value) || value === "") {
+                        if (notRequireNumbs.hasOwnProperty(key)) {
+                            value = notRequireNumbs[key];  // Используем значение по умолчанию, если оно есть
+                        } else {
+                            allInputsValid = false;  // Поле обязательно, но значение отсутствует или некорректно
+                            return;  // Прекращаем выполнение для текущего параметра
+                        }
                     }
-                }
-            } else {
-                value = $(`#${key}`).is(':checked');
+                    break;
+                case "checkbox":
+                    value = $(`#${key}`).is(':checked');
+                    break;
+                case "select":
+                    value = $(`#${key}`).val();
+                    break;
+                default:
+                    allInputsValid = false;  // Неизвестный тип поля
+                    return;  // Прекращаем выполнение для текущего параметра
             }
 
             params[key] = value;
-
-            // Проверка обязательных полей
-            if ((isNaN(value) || value === "")) {
-                allInputsValid = false;
-            }
         });
 
         if (allInputsValid) {
+            console.log('Params before POST:', params);
             // Отправка POST-запроса
             $.ajax({
                 type: 'POST',

@@ -13,14 +13,15 @@
     <form id="medCalcForm">
         <#list info as param>
             <label for="${param.key}">${param.descr}:</label><br>
-            <input type="${param.type}" id="${param.key}" name="${param.key}" 
-            <#list numbs as numb>
-            <#if numb.key == param.key> 
-                step=${numb.step?c}
-                max=${numb.max?c}
-                min=${numb.min?c}
-                </#if>
-            </#list>>
+            <#if param.type != 'select'>
+                <input type="${param.type}" id="${param.key}" name="${param.key}"<#list numbs as numb><#if numb.key == param.key> step=${numb.step?c} max=${numb.max?c} min=${numb.min?c}</#if></#list>>
+            <#else>
+                <select id="${param.key}" name="${param.key}">
+                <#list selects as select>
+                    <option value="${select}">${select}</option>
+                </#list>
+                </select>
+            </#if>
             <br><br>
         </#list>
     </form>

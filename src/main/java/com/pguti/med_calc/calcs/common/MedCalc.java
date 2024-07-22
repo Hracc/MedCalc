@@ -7,6 +7,7 @@ import java.util.Map;
 
 public interface MedCalc {
     List<MedCalcNumbParams> getNumberParams();
+    List<String> getListParam();
     Map<String, Double> getNotRequireNumbs();
     String getId();
     String getName();

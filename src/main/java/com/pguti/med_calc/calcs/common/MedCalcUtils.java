@@ -1,5 +1,6 @@
 package com.pguti.med_calc.calcs.common;
 
+import java.util.List;
 import java.util.Map;
 
 public class MedCalcUtils {
@@ -10,6 +11,13 @@ public class MedCalcUtils {
 
     public static String getBooleanParamType() {
         return "checkbox";
+    }
+
+    public static String getListParamType(){
+        return "select";
+    }
+    public static String createString(String paramName, Map<String, Object> params){
+        return (String) params.get(paramName);
     }
 
     public static Double createNumber(String paramName, Map<String, Object> params) {
