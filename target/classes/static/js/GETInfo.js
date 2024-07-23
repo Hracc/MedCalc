@@ -1,8 +1,7 @@
 $(document).ready(function () {
-
     $.ajax({
         type: 'GET',
-        url: `/calculator/${data}/info`,  // Используйте значение data из FreeMarker
+        url: `/calculator/${data}/info`,  // Использование значения data из FreeMarker
         dataType: 'json',
         success: function (response) {
             if (response && response.info) {
@@ -16,5 +15,4 @@ $(document).ready(function () {
             $('#info').html(`<p>Ошибка: ${xhr.responseText}</p>`);
         }
     });
-
 });

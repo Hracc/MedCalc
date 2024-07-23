@@ -1,13 +1,13 @@
 package com.pguti.med_calc.service;
 
-import com.pguti.med_calc.calcs.MedCalcExample;
-import com.pguti.med_calc.calcs.common.MedCalc;
-import com.pguti.med_calc.calcs.MedCalcPercOfTheSubstance;
+import com.pguti.med_calc.model.MedCalcExample;
+import com.pguti.med_calc.model.common.interfaces.MedCalc;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+// Данные Service нужен для получения всех  калькуляторов и взаимодействия с ними в Контроллерах
 @org.springframework.stereotype.Service
 public class MedCalcService {
     //    Переменная для хранения списка калькуляторов
@@ -16,7 +16,6 @@ public class MedCalcService {
     //  *  Заполнение списка калькуляторов
     {
         putCalcList(new MedCalcExample());
-        putCalcList(new MedCalcPercOfTheSubstance());
     }
 
     private void putCalcList(MedCalc medCalc) {
@@ -26,7 +25,6 @@ public class MedCalcService {
     public Map<String, String> getCalcList() {
         return calcList.values().stream().collect(Collectors.toMap(MedCalc::getId, MedCalc::getName));
     }
-
 
     public MedCalc getCalcById(String id) {
         return calcList.get(id);

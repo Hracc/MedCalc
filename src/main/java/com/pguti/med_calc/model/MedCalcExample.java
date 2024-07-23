@@ -1,6 +1,10 @@
-package com.pguti.med_calc.calcs;
+package com.pguti.med_calc.model;
 
-import com.pguti.med_calc.calcs.common.*;
+import com.pguti.med_calc.model.common.interfaces.MedCalc;
+import com.pguti.med_calc.model.common.params.NumbParam;
+import com.pguti.med_calc.model.common.params.ListParam;
+import com.pguti.med_calc.model.common.params.ResultParam;
+import com.pguti.med_calc.model.common.utils.MedCalcUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,10 +14,10 @@ public class MedCalcExample implements MedCalc {
 
 
     @Override
-    public List<NumbParams> getNumberParams() {
+    public List<NumbParam> getNumberParams() {
         return List.of(
-                new NumbParams("var1", 1, 0,200),
-                new NumbParams("var2",0.1,0,100)
+                new NumbParam("var1", 1, 0,200),
+                new NumbParam("var2",0.1,0,100)
         );
     }
 
@@ -47,19 +51,19 @@ public class MedCalcExample implements MedCalc {
     }
 
     @Override
-    public List<ParamsList> getInfoParams() {
+    public List<ListParam> getInfoParams() {
         return List.of(
-                new ParamsList("var1", "Число 1", MedCalcUtils.getNumberParamType()),
-                new ParamsList("var2", "Число 2(не обязательно)", MedCalcUtils.getNumberParamType()),
-                new ParamsList("var3", "Да/Нет", MedCalcUtils.getBooleanParamType()),
-                new ParamsList("var4", "Состояния", MedCalcUtils.getListParamType())
+                new ListParam("var1", "Число 1", MedCalcUtils.getNumberParamType()),
+                new ListParam("var2", "Число 2(не обязательно)", MedCalcUtils.getNumberParamType()),
+                new ListParam("var3", "Да/Нет", MedCalcUtils.getBooleanParamType()),
+                new ListParam("var4", "Состояния", MedCalcUtils.getListParamType())
         );
     }
 
     @Override
-    public List<Result> getInfoResult() {
+    public List<ResultParam> getInfoResult() {
         return List.of(
-                new Result("res","Итог")
+                new ResultParam("res","Итог")
         );
     }
 

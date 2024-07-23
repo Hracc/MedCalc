@@ -6,7 +6,7 @@ $(document).ready(function() {
         let allInputsValid = true;
         const params = {};
 
-        // Сбор параметров из form
+        // Сбор параметров из формы
         info.forEach(param => {
             let key = param.key;
             let type = param.type;
@@ -64,7 +64,7 @@ $(document).ready(function() {
         }
     }
 
-    // Установка задержки на отправки запроса после изменения или ввода значения
+    // Установка задержки на отправку запроса после изменения или ввода значения
     info.forEach(param => {
         const keyElement = $(`#${param.key}`);
         keyElement.on('input change', function() {

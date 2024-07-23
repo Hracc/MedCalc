@@ -1,11 +1,11 @@
-package com.pguti.med_calc.calcs.common;
+package com.pguti.med_calc.model.common.params;
 
-public class ParamsList {
+public class ListParam {
     private String key;
     private String descr;
     private String type;
 
-    public ParamsList(String key, String descr, String type) {
+    public ListParam(String key, String descr, String type) {
         this.key = key;
         this.descr = descr;
         this.type = type;

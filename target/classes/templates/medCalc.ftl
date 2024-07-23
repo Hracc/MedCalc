@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <!-- Структура страницы -->
     <a href="/">Вернуться назад</a>
     <h1>Калькулятор: ${calc}</h1>
     <form id="medCalcForm">

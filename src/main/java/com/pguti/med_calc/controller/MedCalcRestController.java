@@ -15,6 +15,7 @@ public class MedCalcRestController {
     public MedCalcRestController(MedCalcService medCalcService) {
         this.medCalcService = medCalcService;
     }
+
     @GetMapping("/{calc}/info")
     public ResponseEntity<Map<String, String>> getInfo(@PathVariable String calc) {
         Map<String, String> calcInfo = medCalcService.getCalcInfo(calc);

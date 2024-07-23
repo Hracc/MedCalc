@@ -1,6 +1,6 @@
 package com.pguti.med_calc.controller;
 
-import com.pguti.med_calc.calcs.common.MedCalc;
+import com.pguti.med_calc.model.common.interfaces.MedCalc;
 import com.pguti.med_calc.service.MedCalcService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,18 +16,21 @@ public class MedCalcController {
     public MedCalcController(MedCalcService medCalcService) {
         this.medCalcService = medCalcService;
     }
+
+    // Отображение списка калькуляторов
     @GetMapping("/")
     public String getCalcList(Model model){
-        model.addAttribute("medCalcList",medCalcService.getCalcList());
+        model.addAttribute("medCalcList", medCalcService.getCalcList());
         return "medCalcList";
     }
 
+    // Отображение конкретного калькулятора по ID
     @GetMapping("/calculator/{calc}")
     public String getMedCalc(@PathVariable String calc, Model model){
-        MedCalc medCalc= medCalcService.getCalcById(calc);
+        MedCalc medCalc = medCalcService.getCalcById(calc);
         if(medCalc != null && medCalc.getId().equals(calc)){
-            model.addAttribute("calc",medCalc.getName());
-            model.addAttribute("numbs",medCalc.getNumberParams());
+            model.addAttribute("calc", medCalc.getName());
+            model.addAttribute("numbs", medCalc.getNumberParams());
             model.addAttribute("data", calc);
             model.addAttribute("info", medCalc.getInfoParams());
             model.addAttribute("results", medCalc.getInfoResult());
