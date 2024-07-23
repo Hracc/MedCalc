@@ -39,7 +39,6 @@ $(document).ready(function() {
         });
 
         if (allInputsValid) {
-            console.log('Params before POST:', params);
             // Отправка POST-запроса
             $.ajax({
                 type: 'POST',

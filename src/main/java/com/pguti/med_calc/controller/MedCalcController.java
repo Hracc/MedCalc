@@ -26,16 +26,11 @@ public class MedCalcController {
 
     // Отображение конкретного калькулятора по ID
     @GetMapping("/calculator/{calc}")
-    public String getMedCalc(@PathVariable String calc, Model model){
+    public String getMedCalc(@PathVariable String calc, Model model) {
         MedCalc medCalc = medCalcService.getCalcById(calc);
-        if(medCalc != null && medCalc.getId().equals(calc)){
-            model.addAttribute("calc", medCalc.getName());
-            model.addAttribute("numbs", medCalc.getNumberParams());
+        if (medCalc != null && medCalc.getId().equals(calc)) {
+            model.addAttribute("medCalc", medCalc);
             model.addAttribute("data", calc);
-            model.addAttribute("info", medCalc.getInfoParams());
-            model.addAttribute("results", medCalc.getInfoResult());
-            model.addAttribute("notRequireNumbs", medCalc.getNotRequireNumbs());
-            model.addAttribute("selects", medCalc.getListParam());
         } else {
             model.addAttribute("alert", "нету такого");
         }

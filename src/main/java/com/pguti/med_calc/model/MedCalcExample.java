@@ -1,8 +1,8 @@
 package com.pguti.med_calc.model;
 
 import com.pguti.med_calc.model.common.interfaces.MedCalc;
-import com.pguti.med_calc.model.common.params.NumbParam;
 import com.pguti.med_calc.model.common.params.ListParam;
+import com.pguti.med_calc.model.common.params.NumbParam;
 import com.pguti.med_calc.model.common.params.ResultParam;
 import com.pguti.med_calc.model.common.utils.MedCalcUtils;
 
@@ -11,30 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 public class MedCalcExample implements MedCalc {
-
-
-    @Override
-    public List<NumbParam> getNumberParams() {
-        return List.of(
-                new NumbParam("var1", 1, 0,200),
-                new NumbParam("var2",0.1,0,100)
-        );
-    }
-
-    @Override
-    public List<String> getListParam() {
-        return List.of(
-                "Да","Нет","Что?"
-        );
-    }
-
-    @Override
-    public Map<String, Double> getNotRequireNumbs() {
-        return Map.of(
-                "var2",1.0
-        );
-    }
-
     @Override
     public String getId() {
         return "example";
@@ -42,55 +18,86 @@ public class MedCalcExample implements MedCalc {
 
     @Override
     public String getName() {
-        return "Пример калькулятора";
+        return "Пример структуры калькулятора";
     }
 
     @Override
     public String getInfo() {
-        return "Показывает все реализованные механики калькулятора";
+        return "В этом калькуляторе сделаны возможности для создания калькулятора. " +
+                "Число 1 обязательна для формулы." +
+                "Число 2 необязательно и в случае не написания в него числа будет равна стандартному значению." +
+                "Умножить/Делить для создания выбора из двух вариантов ответа." +
+                "Ничего не делать /Умножить на 0/ Умножить на 2 для создания нескольких вариантов ответа";
+    }
+
+    @Override
+    public Map<String, Object> calculate(Map<String, Object> params) {
+        Map<String, Object> res = new HashMap<>();
+
+        double var1 = MedCalcUtils.createNumber("var1", params);
+        double var2 = MedCalcUtils.createNumber("var2", params);
+        double operation;
+        boolean var3 = MedCalcUtils.createBoolean("var3", params);
+        String var4 = MedCalcUtils.createString("var4", params);
+        if (var3) {
+            operation = var1 * var2;
+            res.put("res1", operation);
+        } else {
+            operation = var1 / var2;
+            res.put("res1", operation);
+        }
+        switch (var4) {
+            case "Умножить на 2":
+                res.put("res2", operation * 2);
+                break;
+            case "Разделить на 3":
+                res.put("res2", operation / 3);
+                break;
+            default:
+                res.put("res2", 0);
+        }
+        return res;
     }
 
     @Override
     public List<ListParam> getInfoParams() {
         return List.of(
                 new ListParam("var1", "Число 1", MedCalcUtils.getNumberParamType()),
-                new ListParam("var2", "Число 2(не обязательно)", MedCalcUtils.getNumberParamType()),
-                new ListParam("var3", "Да/Нет", MedCalcUtils.getBooleanParamType()),
-                new ListParam("var4", "Состояния", MedCalcUtils.getListParamType())
+                new ListParam("var2", "Число 2", MedCalcUtils.getNumberParamType()),
+                new ListParam("var3", "Умножить/Разделить", MedCalcUtils.getBooleanParamType()),
+                new ListParam("var4", "Доп операции:", MedCalcUtils.getListParamType())
         );
     }
 
     @Override
     public List<ResultParam> getInfoResult() {
         return List.of(
-                new ResultParam("res","Итог")
+                new ResultParam("res1", "Операция 1"),
+                new ResultParam("res2", "Операция 2")
         );
     }
 
     @Override
-    public Map<String, Object> calculate(Map<String, Object> params) {
-        Double var1 = MedCalcUtils.createNumber("var1", params);
-        Double var2 = MedCalcUtils.createNumber("var2", params);
-        boolean var3 = MedCalcUtils.createBoolean("var3", params);
-        String var4= MedCalcUtils.createString("var4",params);
-        Map<String, Object> result = new HashMap<>();
-        double numb = 1;
-        if (var3) {
-            numb *= 2;
-        }
-        switch (var4){
-            case "Да":
-                numb+=1;
-                break;
-            case "Нет":
-                numb-=1;
-                break;
-            case "Что?":
-                numb*=69;
-                break;
-        }
+    public Map<String, Double> getNotRequireNumbs() {
+        return Map.of(
+                "var2", 1.0
+        );
+    }
 
-        result.put("res", MedCalcUtils.roundToNumber(var1 * var2 + numb,2));
-        return result;
+    @Override
+    public List<NumbParam> getNumberParams() {
+        return List.of(
+                new NumbParam("var1",1,0,300),
+                new NumbParam("var2",0.1,0,100)
+        );
+    }
+
+    @Override
+    public List<String> getListParam() {
+        return List.of(
+                "Ничего не делать",
+                "Умножить на 2",
+                "Разделить на 3"
+        );
     }
 }
