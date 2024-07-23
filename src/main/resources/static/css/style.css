@@ -1,0 +1,225 @@
+/* Основные стили для страницы */
+body {
+    font-family: 'Arial', sans-serif; /* Замена шрифта на Arial */
+    background-color: #f8f9fa; /* Светлый фон страницы */
+    color: #343a40; /* Темный текст */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Основной контейнер для содержимого */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Стили заголовков */
+h1 {
+    color: #dc3545; /* Красный цвет для заголовков */
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2rem; /* Размер шрифта для заголовков */
+}
+
+/* Стили для шапки */
+.header {
+    background: #dc3545; /* Красный фон */
+    color: #ffffff; /* Белый текст */
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 28px; /* Увеличение размера шрифта для шапки */
+    font-weight: bold;
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+/* Стили для шапки со ссылкой */
+.header a {
+    color: #ffffff; /* Белый цвет ссылки */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+/* Стили для формы */
+form {
+    background: #ffffff; /* Белый фон формы */
+    border-radius: 8px; /* Скругление углов */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень для формы */
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* Стили для инпутов и селектов */
+input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da; /* Цвет границы */
+    border-radius: 4px; /* Скругление углов */
+    box-sizing: border-box; /* Учитывать паддинг и бордер в ширине */
+}
+
+input[type="number"] {
+    max-width: 150px; /* Максимальная ширина для числовых инпутов */
+}
+
+/* Стиль для переключателя */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #dc3545; /* Красный цвет для выключенного состояния */
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #28a745; /* Зеленый цвет для включенного состояния */
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider:active:before {
+    width: 32px;
+}
+
+/* Стили для блоков результатов и информации */
+#result, #info, form {
+    background: #ffffff; /* Белый фон блоков */
+    border-radius: 8px; /* Скругление углов блоков */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень для блоков */
+    margin: 20px auto; /* Центрирование блоков */
+    max-width: 800px; /* Максимальная ширина блоков */
+}
+
+/* Стили для блока информации о калькуляторе */
+#info {
+    background: #e9ecef; /* Светло-серый фон для информации */
+    color: #495057; /* Темный цвет текста */
+    border-left: 5px solid #dc3545; /* Красная левая граница для выделения */
+}
+
+/* Жирный текст для описания и результатов */
+strong {
+    font-weight: bold;
+}
+
+/* Абзацы в описаниях */
+p {
+    margin: 0 0 15px; /* Отступы снизу */
+}
+
+/* Стили для названий значений и результатов */
+#result p {
+    font-size: 1rem; /* Размер шрифта для описания результатов */
+    font-weight: normal; /* Обычный вес шрифта */
+    margin: 5px 0; /* Отступы для параграфов */
+}
+
+/* Стили для текста описания в блоке информации */
+#info div {
+    color: #2b2b2c; /* Серый цвет текста */
+    font-size: 1rem; /* Размер шрифта для текста описания */
+}
+/* Стили для списка калькуляторов */
+#calcList a {
+    color: #dc3545; /* Цвет ссылок */
+    text-decoration: none; /* Убрать подчеркивание */
+    font-size: 1.2rem; /* Размер шрифта */
+    display: block; /* Сделать каждый элемент списка блочным */
+    margin-bottom: 10px; /* Отступ снизу */
+}
+
+#calcList a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+/* Стили для заголовков разделов */
+#info .section-title, #result .section-title {
+    font-size: 1.5rem; /* Размер шрифта для заголовков секций */
+    font-weight: bold; /* Жирный текст */
+    margin-bottom: 10px; /* Отступ снизу */
+    color: #dc3545; /* Красный цвет для заголовков */
+}
+
+/* Стили для текста разделов */
+#info .section-content, #result .section-content {
+    color: #6c757d; /* Серый цвет текста */
+    font-style: italic; /* Наклонный текст */
+    margin-bottom: 15px; /* Отступ снизу */
+}
+/* Стили для заголовка результатов и калькулятора */
+#info strong {
+    font-size: 1.5rem; /* Размер шрифта для заголовка блока */
+    display: block; /* Убедитесь, что заголовок занимает новую строку */
+    margin-bottom: 10px; /* Отступ снизу */
+}
+/* Стили для заголовка результатов и калькулятора */
+#result strong {
+    font-size: 1.5rem; /* Размер шрифта для заголовка блока */
+    display: block; /* Убедитесь, что заголовок занимает новую строку */
+    margin-bottom: 10px; /* Отступ снизу */
+}
+
+/* Стили для элементов в блоке результатов */
+#result .result-item {
+    font-size: 1rem; /* Размер шрифта для элементов */
+    font-weight: normal; /* Обычный вес шрифта */
+    margin: 5px 0; /* Отступы для элементов */
+}
+
+/* Стили для названия и значения результата в одной строке */
+#result .result-item span.label {
+    font-weight: bold; /* Жирный стиль для названия */
+    margin-right: 10px; /* Отступ между названием и значением */
+}
+
+/* Стили для текста описания в блоке информации */
+#info .description {
+    color: #6c757d; /* Более светлый серый цвет для наклонного текста */
+    font-style: italic; /* Наклонный текст */
+    opacity: 0.7; /* Прозрачность текста */
+    margin-bottom: 15px; /* Отступ снизу */
+}
+
+/* Стили для текста более детальной информации */
+#info .detailed-info {
+    color: #495057; /* Тёмный цвет текста для более детальной информации */
+    font-style: normal; /* Обычный стиль текста */
+}

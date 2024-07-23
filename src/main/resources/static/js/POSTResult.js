@@ -46,10 +46,10 @@ $(document).ready(function() {
                 contentType: 'application/json',
                 data: JSON.stringify(params),
                 success: function(response) {
-                    let resultHtml = '';
+                    let resultHtml = '<strong>Результаты:</strong>'; // Добавляем заголовок
                     // Вывод результата
                     results.forEach(res => {
-                        resultHtml += `<p>${res.descr}: ${response[res.key]}</p>`;
+                        resultHtml += `<div class="result-item"><span class="label">${res.descr}:</span> ${response[res.key]}</div>`;
                     });
                     $('#result').html(resultHtml);
                 },

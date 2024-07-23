@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Get Calc List</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Список калькуляторов</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Подключение CSS -->
 </head>
-
 <body>
-    <h1>Медицинские калькуляторы</h1>
-    <div id="calcList">
-        <#list medCalcList?keys as key>
-            <a href='/calculator/${key}'>
-                ${medCalcList[key]}
-            </a><br><br>
-        </#list>
+    <div class="header">
+        <a href="/">Медицинские калькуляторы</a>
+    </div>
+    <div class="container">
+        <h1>Список:</h1>
+        <div id="calcList">
+            <#list medCalcList?keys as key>
+                <a href='/calculator/${key}' class="calc-list-item">
+                    ${medCalcList[key]}
+                </a>
+            </#list>
+        </div>
     </div>
 </body>
-
 </html>
