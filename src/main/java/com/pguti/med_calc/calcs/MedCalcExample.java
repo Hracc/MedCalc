@@ -1,9 +1,6 @@
 package com.pguti.med_calc.calcs;
 
-import com.pguti.med_calc.calcs.common.MedCalc;
-import com.pguti.med_calc.calcs.common.MedCalcParamsList;
-import com.pguti.med_calc.calcs.common.MedCalcResult;
-import com.pguti.med_calc.calcs.common.MedCalcUtils;
+import com.pguti.med_calc.calcs.common.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,10 +10,10 @@ public class MedCalcExample implements MedCalc {
 
 
     @Override
-    public List<MedCalcNumbParams> getNumberParams() {
+    public List<NumbParams> getNumberParams() {
         return List.of(
-                new MedCalcNumbParams("var1", 1, 0,200),
-                new MedCalcNumbParams("var2",0.1,0,100)
+                new NumbParams("var1", 1, 0,200),
+                new NumbParams("var2",0.1,0,100)
         );
     }
 
@@ -50,19 +47,19 @@ public class MedCalcExample implements MedCalc {
     }
 
     @Override
-    public List<MedCalcParamsList> getInfoParams() {
+    public List<ParamsList> getInfoParams() {
         return List.of(
-                new MedCalcParamsList("var1", "Число 1", MedCalcUtils.getNumberParamType()),
-                new MedCalcParamsList("var2", "Число 2(не обязательно)", MedCalcUtils.getNumberParamType()),
-                new MedCalcParamsList("var3", "Да/Нет", MedCalcUtils.getBooleanParamType()),
-                new MedCalcParamsList("var4", "Состояния", MedCalcUtils.getListParamType())
+                new ParamsList("var1", "Число 1", MedCalcUtils.getNumberParamType()),
+                new ParamsList("var2", "Число 2(не обязательно)", MedCalcUtils.getNumberParamType()),
+                new ParamsList("var3", "Да/Нет", MedCalcUtils.getBooleanParamType()),
+                new ParamsList("var4", "Состояния", MedCalcUtils.getListParamType())
         );
     }
 
     @Override
-    public List<MedCalcResult> getInfoResult() {
+    public List<Result> getInfoResult() {
         return List.of(
-                new MedCalcResult("res","Итог")
+                new Result("res","Итог")
         );
     }
 

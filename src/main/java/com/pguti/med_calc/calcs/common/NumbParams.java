@@ -1,12 +1,12 @@
-package com.pguti.med_calc.calcs;
+package com.pguti.med_calc.calcs.common;
 
-public class MedCalcNumbParams {
+public class NumbParams {
     private String key;
     private double step;
     private int min;
     private int max;
 
-    public MedCalcNumbParams(String key, double step, int min, int max) {
+    public NumbParams(String key, double step, int min, int max) {
         this.key = key;
         this.step = step;
         this.min = min;

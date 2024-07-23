@@ -1,12 +1,14 @@
 package com.pguti.med_calc.calcs.common;
 
-public class MedCalcResult {
+public class ParamsList {
     private String key;
     private String descr;
+    private String type;
 
-    public MedCalcResult(String key, String descr) {
+    public ParamsList(String key, String descr, String type) {
         this.key = key;
         this.descr = descr;
+        this.type = type;
     }
 
     public String getKey() {
@@ -24,4 +26,14 @@ public class MedCalcResult {
     public void setDescr(String descr) {
         this.descr = descr;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+
 }

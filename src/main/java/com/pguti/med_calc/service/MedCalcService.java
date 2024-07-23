@@ -2,6 +2,7 @@ package com.pguti.med_calc.service;
 
 import com.pguti.med_calc.calcs.MedCalcExample;
 import com.pguti.med_calc.calcs.common.MedCalc;
+import com.pguti.med_calc.calcs.MedCalcPercOfTheSubstance;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +16,7 @@ public class MedCalcService {
     //  *  Заполнение списка калькуляторов
     {
         putCalcList(new MedCalcExample());
+        putCalcList(new MedCalcPercOfTheSubstance());
     }
 
     private void putCalcList(MedCalc medCalc) {
