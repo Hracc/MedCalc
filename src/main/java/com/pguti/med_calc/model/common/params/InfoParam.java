@@ -1,11 +1,11 @@
 package com.pguti.med_calc.model.common.params;
 
-public class ListParam {
+public class InfoParam {
     private String key;
     private String descr;
     private String type;
 
-    public ListParam(String key, String descr, String type) {
+    public InfoParam(String key, String descr, String type) {
         this.key = key;
         this.descr = descr;
         this.type = type;

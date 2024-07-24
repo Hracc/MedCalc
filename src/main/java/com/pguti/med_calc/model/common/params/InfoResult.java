@@ -1,10 +1,10 @@
 package com.pguti.med_calc.model.common.params;
 
-public class ResultParam {
+public class InfoResult {
     private String key;
     private String descr;
 
-    public ResultParam(String key, String descr) {
+    public InfoResult(String key, String descr) {
         this.key = key;
         this.descr = descr;
     }

@@ -1,9 +1,9 @@
 package com.pguti.med_calc.model;
 
 import com.pguti.med_calc.model.common.interfaces.MedCalc;
-import com.pguti.med_calc.model.common.params.ListParam;
+import com.pguti.med_calc.model.common.params.InfoParam;
 import com.pguti.med_calc.model.common.params.NumbParam;
-import com.pguti.med_calc.model.common.params.ResultParam;
+import com.pguti.med_calc.model.common.params.InfoResult;
 import com.pguti.med_calc.model.common.utils.MedCalcUtils;
 
 import java.util.HashMap;
@@ -60,20 +60,20 @@ public class MedCalcExample implements MedCalc {
     }
 
     @Override
-    public List<ListParam> getInfoParams() {
+    public List<InfoParam> getInfoParams() {
         return List.of(
-                new ListParam("var1", "Число 1", MedCalcUtils.getNumberParamType()),
-                new ListParam("var2", "Число 2", MedCalcUtils.getNumberParamType()),
-                new ListParam("var3", "Умножить/Разделить", MedCalcUtils.getBooleanParamType()),
-                new ListParam("var4", "Доп операции:", MedCalcUtils.getListParamType())
+                new InfoParam("var1", "Число 1", MedCalcUtils.getNumberParamType()),
+                new InfoParam("var2", "Число 2", MedCalcUtils.getNumberParamType()),
+                new InfoParam("var3", "Умножить/Разделить", MedCalcUtils.getBooleanParamType()),
+                new InfoParam("var4", "Доп операции:", MedCalcUtils.getListParamType())
         );
     }
 
     @Override
-    public List<ResultParam> getInfoResult() {
+    public List<InfoResult> getInfoResult() {
         return List.of(
-                new ResultParam("res1", "Операция 1"),
-                new ResultParam("res2", "Операция 2")
+                new InfoResult("res1", "Операция 1"),
+                new InfoResult("res2", "Операция 2")
         );
     }
 

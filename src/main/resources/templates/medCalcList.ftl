@@ -13,9 +13,9 @@
         <h1>Список:</h1>
         <div id="calcList">
             <#list medCalcList?keys as key>
-                <a href='/calculator/${key}' class="calc-list-item">
-                    ${medCalcList[key]}
-                </a>
+                <div class="calc-list-item">
+                    <a href='/calculator/${key}'>${medCalcList[key]}</a>
+                </div>
             </#list>
         </div>
     </div>

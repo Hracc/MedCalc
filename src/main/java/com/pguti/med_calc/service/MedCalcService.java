@@ -1,21 +1,26 @@
 package com.pguti.med_calc.service;
 
+import com.pguti.med_calc.model.MedCalcCURB65;
 import com.pguti.med_calc.model.MedCalcExample;
+import com.pguti.med_calc.model.MedCalcPotassiumDeficiency;
 import com.pguti.med_calc.model.common.interfaces.MedCalc;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 // Данные Service нужен для получения всех  калькуляторов и взаимодействия с ними в Контроллерах
 @org.springframework.stereotype.Service
 public class MedCalcService {
     //    Переменная для хранения списка калькуляторов
-    private final Map<String, MedCalc> calcList = new HashMap<>();
+    private final Map<String, MedCalc> calcList = new TreeMap<>();
 
     //  *  Заполнение списка калькуляторов
     {
         putCalcList(new MedCalcExample());
+        putCalcList(new MedCalcPotassiumDeficiency());
+        putCalcList(new MedCalcCURB65());
     }
 
     private void putCalcList(MedCalc medCalc) {

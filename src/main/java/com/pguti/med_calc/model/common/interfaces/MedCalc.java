@@ -1,8 +1,8 @@
 package com.pguti.med_calc.model.common.interfaces;
 
 import com.pguti.med_calc.model.common.params.NumbParam;
-import com.pguti.med_calc.model.common.params.ListParam;
-import com.pguti.med_calc.model.common.params.ResultParam;
+import com.pguti.med_calc.model.common.params.InfoParam;
+import com.pguti.med_calc.model.common.params.InfoResult;
 
 import java.util.List;
 import java.util.Map;
@@ -14,8 +14,8 @@ public interface MedCalc {
     String getInfo();
     Map<String, Object> calculate(Map<String, Object> params);
     //  Методы для фронтэнда
-    List<ListParam> getInfoParams();
-    List<ResultParam> getInfoResult();
+    List<InfoParam> getInfoParams();
+    List<InfoResult> getInfoResult();
     Map<String, Double> getNotRequireNumbs();
     List<NumbParam> getNumberParams();
     List<String> getListParam();
