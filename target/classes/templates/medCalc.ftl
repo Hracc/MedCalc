@@ -12,27 +12,30 @@
     </div>
     <div class="container">
         <h1>${medCalc.name}</h1>
-    <form id="medCalcForm">
-        <#list medCalc.infoParams as param>
-            <label for="${param.key}" data-hidden-when="${param.hiddenWhen!}">${param.descr}:</label><br>
-            <#if param.type == 'checkbox'>
-                <label class="switch" data-hidden-when="${param.hiddenWhen!}">
-                    <input type="checkbox" id="${param.key}" name="${param.key}">
-                    <span class="slider"></span>
-                </label>
-            <#elseif param.type == 'select'>
-                <select id="${param.key}" name="${param.key}" data-hidden-when="${param.hiddenWhen!}">
-                    <#list medCalc.listParam as select>
-                        <option value="${select}">${select}</option>
-                    </#list>
-                </select>
-            <#else>
-                <input type="${param.type}" id="${param.key}" name="${param.key}" data-hidden-when="${param.hiddenWhen!}"<#list medCalc.numberParams as numb><#if numb.key == param.key> step=${numb.step?c} max=${numb.max?c} min=${numb.min?c}</#if></#list>>
-            </#if>
-            <br><br>
-        </#list>
-        <button type="reset" class="btn-reset">Сброс</button>
-    </form>
+        <form id="medCalcForm">
+            <#list medCalc.infoParams as param>
+                <label for="${param.key}">${param.descr}:</label><br>
+                <#if param.type == 'checkbox'>
+                    <label class="switch">
+                        <input type="checkbox" id="${param.key}" name="${param.key}">
+                        <span class="slider"></span>
+                    </label>
+                <#elseif param.type == 'select'>
+                        <select id="${param.key}" name="${param.key}">
+                            <#list medCalc.listParam as select>
+                                <#if param.key == select.key>
+                                    <option value="${select.name}">${select.name}</option>
+                                </#if>
+                            </#list>
+                        </select>
+                <#else>
+                    <input type="${param.type}" id="${param.key}" name="${param.key}"<#list medCalc.numberParams as numb><#if numb.key == param.key> step=${numb.step?c} max=${numb.max?c} min=${numb.min?c}</#if></#list>>
+                </#if>
+                <br><br>
+            </#list>
+            <!-- Кнопка сброса -->
+            <button type="reset" class="btn-reset">Сброс</button>
+        </form>
         <div id="result">
             <strong>Результаты:</strong>
         </div>

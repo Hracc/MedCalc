@@ -4,6 +4,7 @@ import com.pguti.med_calc.model.common.interfaces.MedCalc;
 import com.pguti.med_calc.model.common.params.InfoParam;
 import com.pguti.med_calc.model.common.params.NumbParam;
 import com.pguti.med_calc.model.common.params.InfoResult;
+import com.pguti.med_calc.model.common.params.SelectParam;
 import com.pguti.med_calc.model.common.utils.MedCalcUtils;
 
 import java.util.HashMap;
@@ -93,11 +94,11 @@ public class MedCalcExample implements MedCalc {
     }
 
     @Override
-    public List<String> getListParam() {
+    public List<SelectParam> getListParam() {
         return List.of(
-                "Ничего не делать",
-                "Умножить на 2",
-                "Разделить на 3"
+                new SelectParam("var4","Ничего не делать"),
+                new SelectParam("var4","Умножить на 2"),
+                new SelectParam("var4","Разделить на 3")
         );
     }
 }

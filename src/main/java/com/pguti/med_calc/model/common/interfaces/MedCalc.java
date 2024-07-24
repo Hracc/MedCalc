@@ -3,6 +3,7 @@ package com.pguti.med_calc.model.common.interfaces;
 import com.pguti.med_calc.model.common.params.NumbParam;
 import com.pguti.med_calc.model.common.params.InfoParam;
 import com.pguti.med_calc.model.common.params.InfoResult;
+import com.pguti.med_calc.model.common.params.SelectParam;
 
 import java.util.List;
 import java.util.Map;
@@ -18,5 +19,5 @@ public interface MedCalc {
     List<InfoResult> getInfoResult();
     Map<String, Double> getNotRequireNumbs();
     List<NumbParam> getNumberParams();
-    List<String> getListParam();
+    List<SelectParam> getListParam();
 }

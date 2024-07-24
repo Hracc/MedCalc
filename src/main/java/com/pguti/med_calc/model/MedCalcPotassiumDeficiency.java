@@ -4,6 +4,7 @@ import com.pguti.med_calc.model.common.interfaces.MedCalc;
 import com.pguti.med_calc.model.common.params.InfoParam;
 import com.pguti.med_calc.model.common.params.NumbParam;
 import com.pguti.med_calc.model.common.params.InfoResult;
+import com.pguti.med_calc.model.common.params.SelectParam;
 import com.pguti.med_calc.model.common.utils.MedCalcUtils;
 
 import java.util.HashMap;
@@ -78,7 +79,7 @@ public class MedCalcPotassiumDeficiency implements MedCalc {
     }
 
     @Override
-    public List<String> getListParam() {
+    public List<SelectParam> getListParam() {
         return List.of();
     }
 }
