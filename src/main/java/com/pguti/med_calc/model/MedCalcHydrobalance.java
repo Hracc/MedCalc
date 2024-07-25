@@ -34,7 +34,7 @@ public class MedCalcHydrobalance implements MedCalc {
                 "Перспирация через кожу\n" +
                 "Нормальный стул\n" +
                 "Физиологический диурез\n" +
-                "В целом, физиологические потери составляют около 40% от физилогической потребности, а диурез в сутки примерно равен 60% от нее, или 20 мл/кг/сутки.\n" +
+                "В целом, физиологические потери составляют около 40% от физиологической потребности, а диурез в сутки примерно равен 60% от нее, или 20 мл/кг/сутки.\n" +
                 "Патологические потери\n" +
                 "Потери с лихорадкой: 3 мл/кг/сут. (10% ФП) на каждый градус выше 37,5 oC. Также теряются электролиты.\n" +
                 "Потери с одышкой: 10 мл/кг/сут. на каждые 10 дыханий в минутут выше 25.\n" +
@@ -72,9 +72,7 @@ public class MedCalcHydrobalance implements MedCalc {
         String travm = MedCalcUtils.createString("travm", params);
         double t = MedCalcUtils.createNumber("t", params);
 
-
-        double req, iv=0;
-        double p=(3*m*c-37.5)+(10*m*(v-25)/10);
+        double req;
         if (a < 65) {
             req = 30;
         } else if (a <= 75) {
@@ -82,25 +80,48 @@ public class MedCalcHydrobalance implements MedCalc {
         } else {
             req = 20;
         }
-        if(!IVL){
-            iv=1000;
-        }
+
         double FP = m * req;
+        double resDiur = m * 20;
+        double resFL = 0.4 * FP;
+
+        double feverLoss = c > 37.5 ? 3 * m * (c - 37.5) : 0;
+        double breathingLoss = v > 25 ? 10 * m * (v - 25) / 10 : 0;
+        double ivlLoss = IVL ? 0 : 1000;
+
+        double travmLoss = 0;
+        switch (travm) {
+            case "Минимальная травматизация (паховая грыжа, флебэктомия, лапароскопческие операции)":
+                travmLoss = 2 * m * t;
+                break;
+            case "Средняя травматизация (холецистэктомия, ампутация)":
+                travmLoss = 4 * m * t;
+                break;
+            case "Тяжелая травматизация (кишечная непроходимость, резекция желудка)":
+                travmLoss = 6 * m * t;
+                break;
+        }
+
+        double pathologicalLosses = feverLoss + breathingLoss + ivlLoss + rv + dr + oth + travmLoss;
+
+        double resHy = i + y - d - resFL - pathologicalLosses;
+
         res.put("resFP", FP);
-        res.put("resDiur", m * 20);
-        res.put("resFL", 0.4 * FP);
-        res.put("resHy", (i+y)-(d+FP+p+rv+dr+oth+iv));
+        res.put("resDiur", resDiur);
+        res.put("resFL", resFL);
+        res.put("resHy", resHy);
+
         return res;
     }
 
     @Override
     public List<InfoParam> getInfoParams() {
         return List.of(
-                new InfoParam("m", "Вес кг", MedCalcUtils.getNumberParamType()),
-                new InfoParam("a", "Возраст", MedCalcUtils.getNumberParamType()),
-                new InfoParam("c", "Температура C", MedCalcUtils.getNumberParamType()),
-                new InfoParam("v", "Частота дыхания, в мин", MedCalcUtils.getNumberParamType()),
-                new InfoParam("d", "Диурез, мл/сутки", MedCalcUtils.getNumberParamType()),
+                new InfoParam("m", "* Вес кг", MedCalcUtils.getNumberParamType()),
+                new InfoParam("a", "* Возраст", MedCalcUtils.getNumberParamType()),
+                new InfoParam("c", "* Температура C", MedCalcUtils.getNumberParamType()),
+                new InfoParam("v", "* Частота дыхания, в мин", MedCalcUtils.getNumberParamType()),
+                new InfoParam("d", "* Диурез, мл/сутки", MedCalcUtils.getNumberParamType()),
                 new InfoParam("i", "Инфузия, мл/сутки", MedCalcUtils.getNumberParamType()),
                 new InfoParam("y", "Энтерально, мл/сутки", MedCalcUtils.getNumberParamType()),
                 new InfoParam("rv", "Рвота, мл/сутки", MedCalcUtils.getNumberParamType()),
@@ -109,23 +130,30 @@ public class MedCalcHydrobalance implements MedCalc {
                 new InfoParam("IVL", "Физиологическое дыхание или физиологичная ИВЛ", MedCalcUtils.getBooleanParamType()),
                 new InfoParam("travm", "Трамвы", MedCalcUtils.getListParamType()),
                 new InfoParam("t", "Длительность операции, часов", MedCalcUtils.getNumberParamType())
-
         );
     }
 
     @Override
     public List<InfoResult> getInfoResult() {
         return List.of(
+                new InfoResult("resHy", "Гидробаланс"),
                 new InfoResult("resFP", "Физиологическая потребность"),
                 new InfoResult("resDiur", "Должный диурез"),
-                new InfoResult("resFL", "Физиологические потери"),
-                new InfoResult("resHy", "Гидробаланс")
+                new InfoResult("resFL", "Физиологические потери")
         );
     }
 
     @Override
     public Map<String, Double> getNotRequireNumbs() {
-        return Map.of();
+        return Map.of(
+                "d",0.0,
+                "y",0.0,
+                "i",0.0,
+                "rv",0.0,
+                "dr",0.0,
+                "oth",0.0,
+                "t",0.0
+        );
     }
 
     @Override
@@ -136,10 +164,10 @@ public class MedCalcHydrobalance implements MedCalc {
     @Override
     public List<SelectParam> getListParam() {
         return List.of(
-                new SelectParam("travm","Нет"),
-                new SelectParam("travm","Легкая"),
-                new SelectParam("travm","Средняя"),
-                new SelectParam("travm","Тяжелая")
+                new SelectParam("travm", "Нет"),
+                new SelectParam("travm", "Минимальная травматизация (паховая грыжа, флебэктомия, лапароскопческие операции)"),
+                new SelectParam("travm", "Средняя травматизация (холецистэктомия, ампутация)"),
+                new SelectParam("travm", "Тяжелая травматизация (кишечная непроходимость, резекция желудка)")
         );
     }
 }
