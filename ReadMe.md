@@ -23,7 +23,7 @@
 
 Команда для запуска: 
 ```powershell
-java -jar .\med_calc-0.0.1-SNAPSHOT.jar
+java -jar .\med_calc-0.0.1-SNAPSHOT.jar**)
 ```
 
 **Требуется Java 17+.**

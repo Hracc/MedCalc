@@ -63,9 +63,11 @@ public class MedCalcService {
         }
         return medCalc;
     }
-/*    public List<SelectParam> getSelectParams(String calc){
-        return calcList.
-    }*/
+
+    public List<SelectParam> getSelectParams(String calc) {
+        return calcList.get(calc).getListParam();
+    }
+
     public Map<String, Object> getResult(String calc, Map<String, Object> params) {
         return calcList.get(calc).calculate(params);
     }

@@ -1,6 +1,7 @@
 package com.pguti.med_calc.controller;
 
 import com.pguti.med_calc.model.common.params.InfoParam;
+import com.pguti.med_calc.model.common.params.SelectParam;
 import com.pguti.med_calc.service.MedCalcService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -32,6 +33,13 @@ public class MedCalcRestController {
     @GetMapping("/{calc}/params")
     public ResponseEntity<List<InfoParam>> getInfoParams(@PathVariable String calc) {
         List<InfoParam> calcInfo = medCalcService.getInfoParams(calc);
+        return ResponseEntity.ok(calcInfo);
+    }
+
+    @Operation(summary = "Варианты ответа для значения", description = "Варианты ответов для значений с типом String")
+    @GetMapping("/{calc}/Listparams")
+    public ResponseEntity<List<SelectParam>> getSelectParams(@PathVariable String calc) {
+        List<SelectParam> calcInfo = medCalcService.getSelectParams(calc);
         return ResponseEntity.ok(calcInfo);
     }
 
