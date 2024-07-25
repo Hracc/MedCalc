@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>${medCalc.name}</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="/css/style.css?v=1.0"> <!-- Подключение CSS -->
+    <link rel="stylesheet" href="/css/style.css?v=1.0">
 </head>
 <body>
     <div class="header">
@@ -12,42 +12,47 @@
     </div>
     <div class="container">
         <h1>${medCalc.name}</h1>
-        <form id="medCalcForm">
-            <#list medCalc.infoParams as param>
-                <label for="${param.key}">${param.descr}:</label><br>
-                <#if param.type == 'checkbox'>
-                    <label class="switch">
-                        <input type="checkbox" id="${param.key}" name="${param.key}">
-                        <span class="slider"></span>
-                    </label>
-                <#elseif param.type == 'select'>
-                        <select id="${param.key}" name="${param.key}">
-                            <#list medCalc.listParam as select>
-                                <#if param.key == select.key>
-                                    <option value="${select.name}">${select.name}</option>
-                                </#if>
-                            </#list>
-                        </select>
-                <#else>
-                    <input type="${param.type}" id="${param.key}" name="${param.key}"<#list medCalc.numberParams as numb><#if numb.key == param.key> step=${numb.step?c} max=${numb.max?c} min=${numb.min?c}</#if></#list>>
-                </#if>
-                <br><br>
-            </#list>
-            <!-- Кнопка сброса -->
-            <button type="reset" class="btn-reset">Сброс</button>
-        </form>
-        <div id="result">
-            <strong>Результаты:</strong>
+        <div class="row">
+            <div class="column left">
+                <form id="medCalcForm">
+                    <#list medCalc.infoParams as param>
+                        <label for="${param.key}">${param.descr}:</label><br>
+                        <#if param.type == 'checkbox'>
+                            <label class="switch">
+                                <input type="checkbox" id="${param.key}" name="${param.key}">
+                                <span class="slider"></span>
+                            </label>
+                        <#elseif param.type == 'select'>
+                            <select id="${param.key}" name="${param.key}">
+                                <#list medCalc.listParam as select>
+                                    <#if param.key == select.key>
+                                        <option value="${select.name}">${select.name}</option>
+                                    </#if>
+                                </#list>
+                            </select>
+                        <#else>
+                            <input type="${param.type}" id="${param.key}" name="${param.key}"<#list medCalc.numberParams as numb><#if numb.key == param.key> step=${numb.step?c} max=${numb.max?c} min=${numb.min?c}</#if></#list>>
+                        </#if>
+                        <br><br>
+                    </#list>
+                    <button type="reset" class="btn-reset">Сброс</button>
+                </form>
+            </div>
+            <div class="column right">
+                <div id="result">
+                    <strong>Результаты:</strong>
+                </div>
+                <div id="info">
+                    <strong>О чем калькулятор?</strong>
+                    <div class="description">
+                        Ниже описаны основый для расчета нужных значений.
+                    </div>
+                    <div class="detailed-info">
+                        <!-- Более детальная информация, переданная ниже -->
+                    </div>
+                </div>
+            </div>
         </div>
-    <div id="info">
-        <strong>О чем калькулятор?</strong>
-        <div class="description">
-            Ниже описаны основый для расчета нужных значений.
-        </div>
-        <div class="detailed-info">
-            <!-- Более детальная информация, переданная ниже -->
-        </div>
-    </div>
     </div>
     <script>
         const info = [

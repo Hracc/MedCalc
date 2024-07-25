@@ -1,3 +1,4 @@
+// Скрипт для отправки информации о каклькуляторе
 $(document).ready(function () {
     $.ajax({
         type: 'GET',

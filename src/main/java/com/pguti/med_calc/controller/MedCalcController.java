@@ -17,14 +17,14 @@ public class MedCalcController {
         this.medCalcService = medCalcService;
     }
 
-    // Отображение списка калькуляторов
+    //  Отображение списка калькуляторов
     @GetMapping("/")
     public String getCalcList(Model model){
         model.addAttribute("medCalcList", medCalcService.getCalcList());
         return "medCalcList";
     }
 
-    // Отображение конкретного калькулятора по ID
+    //  Отображение конкретного калькулятора по ключу
     @GetMapping("/calculator/{calc}")
     public String getMedCalc(@PathVariable String calc, Model model) {
         MedCalc medCalc = medCalcService.getCalcById(calc);

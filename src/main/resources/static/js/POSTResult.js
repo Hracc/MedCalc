@@ -1,7 +1,7 @@
 $(document).ready(function() {
     let debounceTimer;
 
-    // Функция для расчета значений
+    // Функция для отправки результата расчета значений
     function calculate() {
         let allInputsValid = true;
         const params = {};
@@ -17,10 +17,10 @@ $(document).ready(function() {
                     value = parseFloat($(`#${key}`).val());
                     if (isNaN(value) || value === "") {
                         if (notRequireNumbs.hasOwnProperty(key)) {
-                            value = notRequireNumbs[key];  // Используем значение по умолчанию, если оно есть
+                            value = notRequireNumbs[key];
                         } else {
-                            allInputsValid = false;  // Поле обязательно, но значение отсутствует или некорректно
-                            return;  // Прекращаем выполнение для текущего параметра
+                            allInputsValid = false;
+                            return;
                         }
                     }
                     break;
@@ -31,22 +31,21 @@ $(document).ready(function() {
                     value = $(`#${key}`).val();
                     break;
                 default:
-                    allInputsValid = false;  // Неизвестный тип поля
-                    return;  // Прекращаем выполнение для текущего параметра
+                    allInputsValid = false;
+                    return;
             }
 
             params[key] = value;
         });
 
         if (allInputsValid) {
-            // Отправка POST-запроса
             $.ajax({
                 type: 'POST',
                 url: `/calculator/${data}/result`,
                 contentType: 'application/json',
                 data: JSON.stringify(params),
                 success: function(response) {
-                    let resultHtml = '<strong>Результаты:</strong>'; // Добавляем заголовок
+                    let resultHtml = '<strong>Результаты:</strong>'; 
                     // Вывод результата
                     results.forEach(res => {
                         resultHtml += `<div class="result-item"><span class="label">${res.descr}:</span> ${response[res.key]}</div>`;
@@ -58,7 +57,6 @@ $(document).ready(function() {
                 }
             });
         } else {
-            // Если не все нужные значения введены
             $('#result').html('<p>Введите значения.</p>');
         }
     }

@@ -1,0 +1,15 @@
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\config\OpenApiConfig.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\controller\MedCalcController.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\controller\MedCalcRestController.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\MedCalcApplication.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\model\common\interfaces\MedCalc.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\model\common\params\InfoParam.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\model\common\params\InfoResult.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\model\common\params\NumbParam.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\model\common\params\SelectParam.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\model\common\utils\MedCalcUtils.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\model\MedCalcExample.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\model\MedCalcHydrobalance.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\model\MedCalcMayoComaScale.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\model\MedCalcPotassiumDeficiency.java
+C:\Users\79379\Documents\GitHub\MedCalc\src\main\java\com\pguti\med_calc\service\MedCalcService.java

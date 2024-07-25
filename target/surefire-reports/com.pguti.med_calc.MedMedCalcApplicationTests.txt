@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.pguti.med_calc.MedMedCalcApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.642 s -- in com.pguti.med_calc.MedMedCalcApplicationTests

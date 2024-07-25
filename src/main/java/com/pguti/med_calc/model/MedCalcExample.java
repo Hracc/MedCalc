@@ -10,7 +10,7 @@ import com.pguti.med_calc.model.common.utils.MedCalcUtils;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+// Пример простого калькулятора
 public class MedCalcExample implements MedCalc {
     @Override
     public String getId() {
@@ -19,7 +19,7 @@ public class MedCalcExample implements MedCalc {
 
     @Override
     public String getName() {
-        return "Пример структуры калькулятора";
+        return "Пример простого калькулятора";
     }
 
     @Override

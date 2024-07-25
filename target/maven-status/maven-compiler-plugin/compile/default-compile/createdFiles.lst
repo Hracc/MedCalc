@@ -1,0 +1,15 @@
+com\pguti\med_calc\model\MedCalcMayoComaScale.class
+com\pguti\med_calc\model\common\utils\MedCalcUtils.class
+com\pguti\med_calc\model\common\interfaces\MedCalc.class
+com\pguti\med_calc\service\MedCalcService.class
+com\pguti\med_calc\MedCalcApplication.class
+com\pguti\med_calc\model\MedCalcExample.class
+com\pguti\med_calc\model\MedCalcPotassiumDeficiency.class
+com\pguti\med_calc\config\OpenApiConfig.class
+com\pguti\med_calc\model\common\params\NumbParam.class
+com\pguti\med_calc\model\common\params\InfoResult.class
+com\pguti\med_calc\model\common\params\InfoParam.class
+com\pguti\med_calc\model\MedCalcHydrobalance.class
+com\pguti\med_calc\controller\MedCalcController.class
+com\pguti\med_calc\controller\MedCalcRestController.class
+com\pguti\med_calc\model\common\params\SelectParam.class

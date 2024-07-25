@@ -2,7 +2,7 @@ package com.pguti.med_calc.model.common.utils;
 
 import java.util.Map;
 
-//  Класс предназначен для упрощения создания классов калькуляторов.
+//  Класс предназначен для упрощения создания калькуляторов.
 public class MedCalcUtils {
     // Методы create() для создания нужных типов ввода данных MedCalc. Используются в методе MedCalc.calculte() .
     public static String createString(String paramName, Map<String, Object> params){

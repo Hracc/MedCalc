@@ -5,13 +5,16 @@ import com.pguti.med_calc.model.MedCalcHydrobalance;
 import com.pguti.med_calc.model.MedCalcMayoComaScale;
 import com.pguti.med_calc.model.MedCalcPotassiumDeficiency;
 import com.pguti.med_calc.model.common.interfaces.MedCalc;
+import com.pguti.med_calc.model.common.params.InfoParam;
+import com.pguti.med_calc.model.common.params.SelectParam;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
-// Данные Service нужен для получения всех  калькуляторов и взаимодействия с ними в Контроллерах
+// Данный Service нужен для получения списка калькуляторов и взаимодействия с ними в Контроллерах
 @org.springframework.stereotype.Service
 public class MedCalcService {
     //    Переменная для хранения списка калькуляторов
@@ -43,6 +46,26 @@ public class MedCalcService {
         return info;
     }
 
+    public List<InfoParam> getInfoParams(String calc) {
+        List<InfoParam> medCalc = calcList.get(calc).getInfoParams();
+        for (InfoParam infoParam : medCalc) {
+            switch (infoParam.getType()) {
+                case ("number"):
+                    infoParam.setType("double");
+                    break;
+                case ("checkbox"):
+                    infoParam.setType("boolean");
+                    break;
+                case ("select"):
+                    infoParam.setType("String");
+                    break;
+            }
+        }
+        return medCalc;
+    }
+/*    public List<SelectParam> getSelectParams(String calc){
+        return calcList.
+    }*/
     public Map<String, Object> getResult(String calc, Map<String, Object> params) {
         return calcList.get(calc).calculate(params);
     }

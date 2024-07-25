@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Список калькуляторов</title>
-    <link rel="stylesheet" href="/css/style.css"> <!-- Подключение CSS -->
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <div class="header">
