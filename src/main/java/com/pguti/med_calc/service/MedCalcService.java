@@ -1,6 +1,7 @@
 package com.pguti.med_calc.service;
 
 import com.pguti.med_calc.model.MedCalcExample;
+import com.pguti.med_calc.model.MedCalcHydrobalance;
 import com.pguti.med_calc.model.MedCalcMayoComaScale;
 import com.pguti.med_calc.model.MedCalcPotassiumDeficiency;
 import com.pguti.med_calc.model.common.interfaces.MedCalc;
@@ -21,6 +22,7 @@ public class MedCalcService {
         putCalcList(new MedCalcExample());
         putCalcList(new MedCalcPotassiumDeficiency());
         putCalcList(new MedCalcMayoComaScale());
+        putCalcList(new MedCalcHydrobalance());
     }
 
     private void putCalcList(MedCalc medCalc) {

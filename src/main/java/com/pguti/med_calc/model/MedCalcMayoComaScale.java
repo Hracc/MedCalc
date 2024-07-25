@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Оригинал - https://medicalc.pro/mayo
 public class MedCalcMayoComaScale implements MedCalc {
 
     @Override
